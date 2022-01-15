@@ -1,8 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import "./Styles/index.css";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {createStore} from 'redux'
+
+
+//#region Redux Store
+//let store = createStore(reducer)
+
+//Action
+
+
+//#endregion
 
 ReactDOM.render(
   <React.StrictMode>
