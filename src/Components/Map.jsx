@@ -1,33 +1,38 @@
-import {React,useState} from 'react';
-import ReactMapGL, {Marker} from 'react-map-gl';
+import React, { useRef, useEffect, useState } from 'react';
+import 'mapbox-gl/dist/mapbox-gl.css';
+import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+ 
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
+function MapboxGl() {
+    const mapContainer = useRef(null);
+    const map = useRef(null);
+    const [lng, setLng] = useState(-2.108);
+    const [lat, setLat] = useState(57.148);
+    const [zoom, setZoom] = useState(11);useEffect(() => {
+    if (map.current) return; // initialize map only once
+    map.current = new mapboxgl.Map({
+    container: mapContainer.current,
+    style: 'mapbox://styles/mapbox/dark-v10',
+    center: [lng, lat],
+    zoom: zoom
+    });
+    });
+     
+    useEffect(() => {
+    if (!map.current) return; // wait for map to initialize
+    map.current.on('move', () => {
+    setLng(map.current.getCenter().lng.toFixed(3));
+    setLat(map.current.getCenter().lat.toFixed(3));
+    setZoom(map.current.getZoom().toFixed(2));
+    });
+    });
+  return (
+    <div>
+        <div className="sidebar">Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}</div>
+        <div ref={mapContainer} className="map-container" />
 
-function Map() {
-    const [viewport, setViewport] = useState({
-        latitude: 57.148,
-        longitude: -2.108,
-        zoom: 11
-      });
-  return <div>
-
-<ReactMapGL
-      {...viewport} 
-      width="100vw" 
-      height="100vh" 
-      mapStyle="mapbox://styles/mapbox/dark-v9"
-      onViewportChange={nextViewport => setViewport(nextViewport)}
-      mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN} 
-
-    >
-      <Marker latitude={57.148} longitude={-2.108} offsetTop={(-viewport.zoom *4) /2} >
-      <img src={require('../Images/pin.png')} 
-      alt='MarkerPointer' 
-      width={viewport.zoom *2.5} 
-      height={viewport.zoom *3.7}
-      />
-    </Marker>
-    
-    </ReactMapGL>
-  </div>;
+    </div>
+  )
 }
 
-export default Map;
+export default MapboxGl
