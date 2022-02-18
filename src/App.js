@@ -1,5 +1,5 @@
 import Header from './Components/Header';
-// import Map from './Components/Map';
+import Map from './Components/Map';
 import {initializeApp} from 'firebase/app';
 import 'firebase/firestore'
 import 'firebase/auth'

@@ -27,6 +27,23 @@ function MapboxGl() {
     });
 
     
+
+    // map.on('load', function(){
+    //   map.addLayer({
+    //     "id": "simple-tiles",
+    //     "type": "raster",
+    //     "source": {
+    //       "type": "raster",
+    //       "tiles": [`https://tile.openweathermap.org/map/temp_new/
+    //       ${map.current.getZoom()}/
+    //       ${map.current.getCenter().lat.toFixed(0)}/
+    //       ${map.current.getCenter().lng.toFixed(0)}.png?appid=874718354841f0e0250b4b06a05a971e`],
+    //       "tileSize": 256
+    //     },
+    //     "minzoom": 0,
+    //     "maxzoom": 22
+    //   });
+    // });
   return (
     <div>
         <div className="sidebar">Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}</div>
