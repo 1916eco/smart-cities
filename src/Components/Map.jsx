@@ -25,6 +25,8 @@ function MapboxGl() {
     setZoom(map.current.getZoom().toFixed(2));
     });
     });
+
+    
   return (
     <div>
         <div className="sidebar">Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}</div>

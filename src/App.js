@@ -1,9 +1,9 @@
 import Header from './Components/Header';
-// import MapBasLibrary from './Components/MapBasLibrary';
-import Map from './Components/Map';
+// import Map from './Components/Map';
 import {initializeApp} from 'firebase/app';
 import 'firebase/firestore'
 import 'firebase/auth'
+import LeafletMap from './Components/LeafletMap';
 
 //import {useAuthState} from 'react-firebase-hooks/auth';
 //import {useCollectionData} from 'react-firebase-hooks/firestore';
@@ -25,8 +25,8 @@ function App() {
   return (
     <div className="App">
     <Header/>
-    {/* <MapBasLibrary/> */}
-    <Map/>
+    {/* <Map/> */}
+    <LeafletMap/>
 
     </div>
     
