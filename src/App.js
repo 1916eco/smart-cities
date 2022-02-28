@@ -3,7 +3,9 @@ import {initializeApp} from 'firebase/app';
 import 'firebase/firestore'
 import 'firebase/auth'
 import LeafletMap from './Components/LeafletMap';
-import SideControlBar from './Components/SideControlBar';
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Login from './Pages/Login/Login';
+
 
 //import {useAuthState} from 'react-firebase-hooks/auth';
 //import {useCollectionData} from 'react-firebase-hooks/firestore';
@@ -20,14 +22,16 @@ const config = {
 const app = initializeApp(config)
 
 function App() {
-  //const { data } = useFetch( 'api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid='+process.env.REACT_APP_OPENWEATHER_API );
-  //console.log(data);
   return (
     <div className="App">
-    <Header/>
-    <LeafletMap/>
-    <SideControlBar/>
-
+<BrowserRouter>
+  <Header />
+  <Routes>
+    <Route path="/" element={<LeafletMap />} />
+    <Route path="/Login" element={<Login />} />
+    {/* <Route path="/AboutUs" element={<AboutUs />} /> */}
+  </Routes>
+</BrowserRouter>
     </div>
     
   );

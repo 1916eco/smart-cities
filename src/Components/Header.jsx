@@ -1,31 +1,23 @@
 import React from 'react';
-import {AppBar,Toolbar,Typography} from '@mui/material';
 import 'bootstrap/dist/css/bootstrap.css';
 import {Navbar, Nav,Container} from 'react-bootstrap';
-
+import { Link } from "react-router-dom";
 const Header = () => {
   return(
 
     <Navbar bg="dark" variant="dark" className='fixed-top'>
     <Container>
-    <Navbar.Brand href="#home">Smart Cities</Navbar.Brand>
+    <Navbar.Brand as={Link} to="/">Smart Cities</Navbar.Brand>
     <Nav className="me-auto">
-      <Nav.Link href="#home">Map</Nav.Link>
-      <Nav.Link href="#features">Project Description</Nav.Link>
+      <Nav.Link as={Link} to="/">Map</Nav.Link>
+      <Nav.Link as={Link} to="/About">Project Description</Nav.Link>
     </Nav>
     <Nav>
-      <Nav.Link href="#pricing">Login</Nav.Link>
+      <Nav.Link as={Link} to="/Login">Login</Nav.Link>
       </Nav>
     </Container>
   </Navbar>
-
-  //   <React.Fragment>
-  //   <AppBar>
-  //     <Toolbar>
-  //     <Typography>SmartCities</Typography>
-  //     </Toolbar>
-  //     </AppBar>
-  // </React.Fragment>
+  
   );
 };
 
