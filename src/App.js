@@ -3,6 +3,7 @@ import {initializeApp} from 'firebase/app';
 import 'firebase/firestore'
 import 'firebase/auth'
 import LeafletMap from './Components/LeafletMap';
+import SideControlBar from './Components/SideControlBar';
 
 //import {useAuthState} from 'react-firebase-hooks/auth';
 //import {useCollectionData} from 'react-firebase-hooks/firestore';
@@ -25,6 +26,7 @@ function App() {
     <div className="App">
     <Header/>
     <LeafletMap/>
+    <SideControlBar/>
 
     </div>
     
