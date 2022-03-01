@@ -5,6 +5,7 @@ import 'firebase/auth'
 import LeafletMap from './Components/LeafletMap';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Login from './Pages/Login/Login';
+import AboutUs from './Pages/AboutUs/AboutUs';
 
 
 //import {useAuthState} from 'react-firebase-hooks/auth';
@@ -29,7 +30,7 @@ function App() {
   <Routes>
     <Route path="/" element={<LeafletMap />} />
     <Route path="/Login" element={<Login />} />
-    {/* <Route path="/AboutUs" element={<AboutUs />} /> */}
+    <Route path="/AboutUs" element={<AboutUs />} />
   </Routes>
 </BrowserRouter>
     </div>

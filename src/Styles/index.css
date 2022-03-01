@@ -1,3 +1,19 @@
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 .leaflet-container {
   width: 100vw;
   height: 100vh;
@@ -10,12 +26,12 @@
   left: 100vw;
 }
 .mapSidebar {
-  background-color: rgba(35, 55, 75, 0.9);
-  color: #fff;
+  background-color: rgb(35, 55, 75);
   font-family: monospace;
   position: absolute;
+  color: aliceblue;
   width: 20vw;
-  height: 50vh;
+  height: 55vh;
   top: 10vh;
   right: 0;
   z-index: 9999;
