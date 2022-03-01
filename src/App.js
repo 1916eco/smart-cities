@@ -5,6 +5,7 @@ import LogIn from './Components/LogIn';
 import SignUp from './Components/SignUp';
 import AboutUs from './Pages/AboutUs/AboutUs';
 import './firebase.js'
+import ForgotPage from './Components/ForgotPage';
 
 //import {useAuthState} from 'react-firebase-hooks/auth';
 //import {useCollectionData} from 'react-firebase-hooks/firestore';
@@ -20,6 +21,7 @@ function App() {
     <Route path="/LogIn" element={<LogIn />} />
     <Route path="/AboutUs" element={<AboutUs />} />
     <Route path="/SignUp" element={<SignUp />} />
+    <Route path="/ForgotPass" exact element={<ForgotPage />} />
   </Routes>
 </BrowserRouter>
     </div>

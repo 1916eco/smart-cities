@@ -26,6 +26,9 @@ function login() {
         <Form.Label>Email Password</Form.Label>
         <Form.Control type='password' placeholder='Enter Password'></Form.Control>
     </Form.Group>
+    <p className="forgot-password text-right">
+      <Link to="/ForgotPass">Forgot Password?</Link>
+    </p>
     <div className='d-grid gap-2 mt-3'><Button variant='primary' type='Submit'>Sign In</Button></div>
     </Form>
 <hr/>
