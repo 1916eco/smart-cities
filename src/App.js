@@ -1,8 +1,8 @@
 import Header from './Components/Header';
 import LeafletMap from './Components/LeafletMap';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import LogIn from './Pages/LogIn/LogIn';
-import SignUp from './Pages/SignUp/SignUp';
+import LogIn from './Components/LogIn';
+import SignUp from './Components/SignUp';
 import AboutUs from './Pages/AboutUs/AboutUs';
 import './firebase.js'
 
