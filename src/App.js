@@ -3,7 +3,7 @@ import LeafletMap from './Components/LeafletMap';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import LogIn from './Components/LogIn';
 import SignUp from './Components/SignUp';
-import AboutUs from './Pages/AboutUs/AboutUs';
+import AboutUs from './Components/AboutUs';
 import './firebase.js'
 import ForgotPage from './Components/ForgotPage';
 
