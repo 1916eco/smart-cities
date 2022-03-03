@@ -6,6 +6,7 @@ import SignUp from './Components/SignUp';
 import AboutUs from './Components/AboutUs';
 import './firebase.js'
 import ForgotPage from './Components/ForgotPage';
+import { UserAuthContextProvider } from './context/UserAuthContext';
 
 //import {useAuthState} from 'react-firebase-hooks/auth';
 //import {useCollectionData} from 'react-firebase-hooks/firestore';
@@ -16,6 +17,7 @@ function App() {
     <div className="App">
 <BrowserRouter>
   <Header />
+  <UserAuthContextProvider>
   <Routes>
     <Route path="/" element={<LeafletMap />} />
     <Route path="/LogIn" element={<LogIn />} />
@@ -23,6 +25,7 @@ function App() {
     <Route path="/SignUp" element={<SignUp />} />
     <Route path="/ForgotPass" exact element={<ForgotPage />} />
   </Routes>
+  </UserAuthContextProvider>
 </BrowserRouter>
     </div>
     
