@@ -14,20 +14,20 @@ function SideControlBar() {
           </Card.Text>
         </Card.Body>
         <ListGroup bg="dark"  className="list-group-flush">
-          <FormListGroupItem label="Weather"></FormListGroupItem>
-          <FormListGroupItem label="Electric Chargers"></FormListGroupItem>
-          <FormListGroupItem label="Recycling Points"></FormListGroupItem>
-          <FormListGroupItem label="Weather"></FormListGroupItem>
-          <FormListGroupItem label="Weather"></FormListGroupItem>
+          <FormListGroupItem name="AdditionalGroup" type="checkbox" label="Weather"></FormListGroupItem>
+          <FormListGroupItem name="AdditionalGroup" type="checkbox" label="Electric Chargers"></FormListGroupItem>
+          <FormListGroupItem name="AdditionalGroup" type="checkbox" label="Recycling Points"></FormListGroupItem>
+          <FormListGroupItem name="AdditionalGroup" type="checkbox" label="Weather"></FormListGroupItem>
+          <FormListGroupItem name="AdditionalGroup" type="checkbox" label="Weather"></FormListGroupItem>
         </ListGroup>
         <Card.Body>
           <Card.Title>Weather</Card.Title>
         </Card.Body>
         <ListGroup bg="dark"  className="list-group-flush">
-        <FormListGroupItem label="Temperature"></FormListGroupItem>
-        <FormListGroupItem label="Clouds"></FormListGroupItem>
-        <FormListGroupItem label="Wind"></FormListGroupItem>
-        <FormListGroupItem label="Precipitation"></FormListGroupItem>
+        <FormListGroupItem name="WeatherGroup" type="radio" label="Temperature"></FormListGroupItem>
+        <FormListGroupItem name="WeatherGroup" type="radio" label="Clouds"></FormListGroupItem>
+        <FormListGroupItem name="WeatherGroup" type="radio" label="Wind"></FormListGroupItem>
+        <FormListGroupItem name="WeatherGroup" type="radio" label="Precipitation"></FormListGroupItem>
         </ListGroup>
       </Card>
       </Form>
