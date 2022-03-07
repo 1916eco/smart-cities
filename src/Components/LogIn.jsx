@@ -6,7 +6,7 @@ import 'firebase/auth'
 import GoogleButton from "react-google-button"
 import {Form,Button,Alert} from "react-bootstrap";
 import { Link, useNavigate } from 'react-router-dom';
-import {googleSignIn,useUserAuth} from "../context/UserAuthContext";
+import {useUserAuth} from "../context/UserAuthContext";
 
 function LogIn() {
   const [email, setEmail] = useState("");
@@ -19,7 +19,7 @@ function LogIn() {
     e.preventDefault();
     setError("");
     try {
-      await LogIn(email, password);
+      await logIn(email, password);
       navigate("/home");
     } catch (err) {
       setError(err.message);

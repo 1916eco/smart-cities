@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card,ListGroup,Form } from 'react-bootstrap';
-import FormListGroupItem from './MiniComps/FormListGroupItem';
+import FormListGroupItem from './utils/FormListGroupItem';
 function SideControlBar() {
     return (
     <div>   
@@ -9,8 +9,7 @@ function SideControlBar() {
         <Card.Body>
           <Card.Title>Layer Controller</Card.Title>
           <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
+            Layer controller control the LAYERS NOT WORKING YET THIS IS NEXT STEP
           </Card.Text>
         </Card.Body>
         <ListGroup bg="dark"  className="list-group-flush">
