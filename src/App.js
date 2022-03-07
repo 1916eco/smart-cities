@@ -9,15 +9,12 @@ import ForgotPage from './Components/ForgotPage';
 import { UserAuthContextProvider } from './context/UserAuthContext';
 import ProtectedRoute from './Components/ProtectedRouting';
 
-//import {useAuthState} from 'react-firebase-hooks/auth';
-//import {useCollectionData} from 'react-firebase-hooks/firestore';
-
-
 function App() {
   return (
     <div className="App">
 <BrowserRouter>
-  <UserAuthContextProvider>
+{/* User Context this is the full controller of the system sign in any routes that are within the tags have access */}
+  <UserAuthContextProvider> 
   <Header />
   <Routes>
     <Route path="/" element={<LeafletMap/>} />
