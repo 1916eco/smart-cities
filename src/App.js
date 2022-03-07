@@ -17,8 +17,8 @@ function App() {
   return (
     <div className="App">
 <BrowserRouter>
-  <Header />
   <UserAuthContextProvider>
+  <Header />
   <Routes>
     <Route path="/" element={<LeafletMap/>} />
     <Route path="/LogIn" element={<ProtectedRoute><LogIn/></ProtectedRoute>} />
