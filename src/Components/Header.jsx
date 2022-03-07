@@ -5,11 +5,16 @@ import { Link } from "react-router-dom";
 import {useUserAuth} from "../context/UserAuthContext";
 
 const Header = () => {
+  
+  //Random attempts Ignore :)
   //const something = React.lazy({ logOut, user } = useUserAuth())
   //const hello = async () => {const { logOut, user } = await import('../context/UserAuthContext');
-    //const { logOut, user } = useUserAuth();
+
+  ///THIS IS THE line that creates all the issues LogOut and user should be able to be imported and I should have access but I dont
+  //const { logOut, user } = useUserAuth();
     const handleLogout = async () => {
     try {
+      //here is where I call the Logout for the firebase to handle
       //await logOut();
       //navigate("/");
     } catch (error) {
