@@ -1,11 +1,34 @@
 import { useState, useEffect } from 'react';
-const useFetch = (url = 'api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid='+process.env.REACT_APP_OPENWEATHER_API, options = null) => {
+import axios from 'axios'
+function useFetch (url) {
   const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   useEffect(() => {
-    fetch(url, options)
-      .then(res => res.json())
-      .then(data => setData(data));
-  }, [url, options]);
-  return {data}
+    setLoading(true)
+    axios.get(url)
+      .then((res)=>{
+        setData(res.data);
+      }).catch((err)=>{
+        setError(err);
+      }).finally(()=>{ 
+        setLoading(false);
+      })
+    },[url]);
+
+    const refetch = () =>{
+      setLoading(true)
+      axios.get(url)
+        .then((res)=>{
+          setData(res.data);
+        }).catch((err)=>{
+          setError(err);
+        }).finally(()=>{ 
+          setLoading(false);
+        })
+    }
+  return {data,loading,error,refetch}
+
+  //const { data:anything,loading,error,refetch} = useFetch("www/abc.co.uk/query")
 }
 export default useFetch;
