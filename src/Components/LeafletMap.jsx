@@ -10,6 +10,7 @@ import { Marker, Popup } from 'react-leaflet'
 
 function LeafletMap() {
 
+  const [mapSelect, setMapSelect] = useState(false);
   const [electricLayer, setElectricLayer] = useState(false);
   const [userLocationLayer, setUserLocationLayer] = useState(false);
   const [weatherTypeLayer, setWeatherTypeLayer] = useState("temp_new");
@@ -24,22 +25,37 @@ function LeafletMap() {
     setLatUser(position.coords.latitude);
     setLngUser(position.coords.longitude);
   });}
+  useEffect(()=>
+  {
+    setMapSelect(false)
+  },[weatherLayer])
 
   return (
     <div >
-  <SideControlBar weatherLayer={weatherLayer}setElectricLayer={setElectricLayer}  setUserLocationLayer={setUserLocationLayer} setWeatherTypeLayer={setWeatherTypeLayer} setWeatherLayer={setWeatherLayer}/>
+  <SideControlBar setMapSelect={setMapSelect} weatherLayer={weatherLayer}setElectricLayer={setElectricLayer}  setUserLocationLayer={setUserLocationLayer} setWeatherTypeLayer={setWeatherTypeLayer} setWeatherLayer={setWeatherLayer}/>
 
 <MapContainer center={[57.148, -2.108]} zoom={12.6} zoomControl={false}>
   {/* MAP DEFAULT LOOKS */}
-<TileLayer
+{
+mapSelect===false
+? <TileLayer
     attribution='&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
     url={'https://{s}.tile.jawg.io/jawg-dark/{z}/{x}/{y}{r}.png?access-token='+process.env.REACT_APP_JAWG_LAB_MAPKEY}
   />  
-  {/* STREET VIEW BRIGHT */}
-  {/* <TileLayer
-  attribution='&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-  url={'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'}
-/> */}
+:null 
+}
+
+{
+mapSelect===true
+? <TileLayer
+attribution='&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+url={'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'}/> 
+:null 
+}
+
+
+
+  
 
 
 {

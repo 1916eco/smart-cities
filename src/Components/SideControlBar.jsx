@@ -1,7 +1,9 @@
 import React from 'react'
+import { useState } from 'react';
 import { Card,ListGroup,Form,ListGroupItem } from 'react-bootstrap';
-import FormListGroupItem from './utils/FormListGroupItem';
-function SideControlBar({setElectricLayer, setUserLocationLayer,setWeatherTypeLayer,setWeatherLayer,weatherLayer}) {
+function SideControlBar({setElectricLayer, setUserLocationLayer,setWeatherTypeLayer,setWeatherLayer,weatherLayer,setMapSelect}) {
+  const [weatherClicked, setWeatherClicked] = useState(false);
+
     return (
     <div>   
       <Form>
@@ -13,10 +15,15 @@ function SideControlBar({setElectricLayer, setUserLocationLayer,setWeatherTypeLa
           </Card.Text>
         </Card.Body>
         <ListGroup bg="dark"  className="list-group-flush">
-        <ListGroupItem><Form.Check type="checkbox" name="AdditionalGroup" aria-label="option 1" onClick={(e)=>setUserLocationLayer(e.target.checked)} label="User Location"/></ListGroupItem>
+{
+!weatherClicked
+?         <ListGroupItem><Form.Check type="switch" id="custom-switch" defaultChecked={true} label="Use Light map theme" onClick={(e)=>setMapSelect(e.target.checked)}/></ListGroupItem>
+
+: null
+}        <ListGroupItem><Form.Check type="checkbox" name="AdditionalGroup" aria-label="option 1" onClick={(e)=>setUserLocationLayer(e.target.checked)} label="User Location"/></ListGroupItem>
         <ListGroupItem><Form.Check type="checkbox" name="AdditionalGroup" aria-label="option 1" onClick={(e)=>setWeatherLayer(e.target.checked)} label="Recycling Points"/></ListGroupItem>
         <ListGroupItem><Form.Check type="checkbox" name="AdditionalGroup" aria-label="option 1" onClick={(e)=>setElectricLayer(e.target.checked)} label="Electric Chargers"/></ListGroupItem>
-        <ListGroupItem><Form.Check type="checkbox" name="AdditionalGroup" aria-label="option 1" onClick={(e)=>setWeatherLayer(e.target.checked)} label="Weather"/></ListGroupItem>
+        <ListGroupItem><Form.Check type="checkbox" name="AdditionalGroup" aria-label="option 1" onClick={(e)=>[setWeatherLayer(e.target.checked),setWeatherClicked(e.target.checked)]} label="Weather"/></ListGroupItem>
 
         </ListGroup>
 {
