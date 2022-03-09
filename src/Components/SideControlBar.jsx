@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card,ListGroup,Form,ListGroupItem } from 'react-bootstrap';
 import FormListGroupItem from './utils/FormListGroupItem';
-function SideControlBar({setElectricLayer, setUserLocationLayer,setWeatherTypeLayer,setWeatherLayer}) {
+function SideControlBar({setElectricLayer, setUserLocationLayer,setWeatherTypeLayer,setWeatherLayer,weatherLayer}) {
     return (
     <div>   
       <Form>
@@ -19,16 +19,20 @@ function SideControlBar({setElectricLayer, setUserLocationLayer,setWeatherTypeLa
         <ListGroupItem><Form.Check type="checkbox" name="AdditionalGroup" aria-label="option 1" onClick={(e)=>setWeatherLayer(e.target.checked)} label="Weather"/></ListGroupItem>
 
         </ListGroup>
-        <Card.Body>
+{
+weatherLayer
+? <>        <Card.Body>
           <Card.Title>Weather</Card.Title>
         </Card.Body>
         <ListGroup bg="dark"  className="list-group-flush">
-        <ListGroupItem><Form.Check type="radio" name="WeatherGroup" aria-label="option 1" onClick={(e)=>setWeatherTypeLayer("temp_new")} label="Temperature"/></ListGroupItem>
+        <ListGroupItem><Form.Check type="radio" name="WeatherGroup" aria-label="option 1" defaultChecked={true} onClick={(e)=>setWeatherTypeLayer("temp_new")} label="Temperature"/></ListGroupItem>
         <ListGroupItem><Form.Check type="radio" name="WeatherGroup" aria-label="option 1" onClick={(e)=>setWeatherTypeLayer("clouds_new")} label="Clouds"/></ListGroupItem>
         <ListGroupItem><Form.Check type="radio" name="WeatherGroup" aria-label="option 1" onClick={(e)=>setWeatherTypeLayer("wind_new")} label="Wind"/></ListGroupItem>
         <ListGroupItem><Form.Check type="radio" name="WeatherGroup" aria-label="option 1" onClick={(e)=>setWeatherTypeLayer("precipitation_new")} label="Precipitation"/></ListGroupItem>
+        </ListGroup></>
+: null
+}
 
-        </ListGroup>
       </Card>
       </Form>
   </div>

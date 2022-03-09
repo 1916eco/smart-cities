@@ -15,8 +15,6 @@ function LeafletMap() {
   const [weatherTypeLayer, setWeatherTypeLayer] = useState("temp_new");
   const [weatherLayer, setWeatherLayer] = useState(false);
   const [recyclingPointsLayer, setRecyclingPointsLayer] = useState(false);
-  const [weatherLayerVariable, setWeatherLayerVariable] = useState('');
-
 
 
   const [latUser, setLatUser] = useState(null);
@@ -27,12 +25,9 @@ function LeafletMap() {
     setLngUser(position.coords.longitude);
   });}
 
-  
-
-
   return (
     <div >
-  <SideControlBar setElectricLayer={setElectricLayer}  setUserLocationLayer={setUserLocationLayer} setWeatherTypeLayer={setWeatherTypeLayer} setWeatherLayer={setWeatherLayer}/>
+  <SideControlBar weatherLayer={weatherLayer}setElectricLayer={setElectricLayer}  setUserLocationLayer={setUserLocationLayer} setWeatherTypeLayer={setWeatherTypeLayer} setWeatherLayer={setWeatherLayer}/>
 
 <MapContainer center={[57.148, -2.108]} zoom={12.6} zoomControl={false}>
   {/* MAP DEFAULT LOOKS */}
@@ -46,6 +41,10 @@ function LeafletMap() {
   url={'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'}
 /> */}
 
+
+{
+  //#region Weather Controls
+}
 {/* WEATHER LAYERS NOT THE BEST CODE PRACTICE HOWEVER ONSTATE CHANGE THE LAYER DOES NOT RERENDER SO RENDERING ALL 4 AND 
 CONDITIONAL RENDERING IT IS THE BEST METHOD IN THIS CASE */}
 {
@@ -71,6 +70,9 @@ weatherTypeLayer==="precipitation_new"&&weatherLayer
 ?   <WeatherLayers type={"precipitation_new"}/>
 
 : null
+}
+{
+  //#endregion
 }
 
 {/* User Location plotter with conditional rendering*/}
