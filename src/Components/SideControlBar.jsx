@@ -1,8 +1,10 @@
 import React from 'react'
 import { useState } from 'react';
 import { Card,ListGroup,Form,ListGroupItem } from 'react-bootstrap';
+import {useUserAuth} from "../context/UserAuthContext";
 function SideControlBar({setElectricLayer, setUserLocationLayer,setWeatherTypeLayer,setWeatherLayer,weatherLayer,setMapSelect,setRecyclingPointsLayer,setBusLayer}) {
   const [weatherClicked, setWeatherClicked] = useState(false);
+  const { user } = useUserAuth();
 
     return (
     <div>   
@@ -20,7 +22,14 @@ function SideControlBar({setElectricLayer, setUserLocationLayer,setWeatherTypeLa
 ?         <ListGroupItem><Form.Check type="switch" id="custom-switch" label="Use Light map theme" onClick={(e)=>setMapSelect(e.target.checked)}/></ListGroupItem>
 
 : null
-}        <ListGroupItem><Form.Check type="checkbox" name="AdditionalGroup" aria-label="option 1" onClick={(e)=>setUserLocationLayer(e.target.checked)} label="User Location"/></ListGroupItem>
+}       
+        
+{
+user
+?         <ListGroupItem><Form.Check type="checkbox" name="AdditionalGroup" aria-label="option 1" onClick={(e)=>setUserLocationLayer(e.target.checked)} label="User Location"/></ListGroupItem>
+
+: null
+}        
         <ListGroupItem><Form.Check type="checkbox" name="AdditionalGroup" aria-label="option 1" onClick={(e)=>setRecyclingPointsLayer(e.target.checked)} label="Recycling Points"/></ListGroupItem>
         <ListGroupItem><Form.Check type="checkbox" name="AdditionalGroup" aria-label="option 1" onClick={(e)=>setElectricLayer(e.target.checked)} label="Electric Chargers"/></ListGroupItem>
         <ListGroupItem><Form.Check type="checkbox" name="AdditionalGroup" aria-label="option 1" onClick={(e)=>[setWeatherLayer(e.target.checked),setWeatherClicked(e.target.checked)]} label="Weather"/></ListGroupItem>
