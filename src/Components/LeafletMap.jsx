@@ -1,17 +1,19 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet'
-import chargerData from "../data/chargers.json"
-import ElectricCarCharger from './ElectricCarCharger'
+import ElectricCarCharger from './utils/ElectricCarCharger'
 import SideControlBar from './SideControlBar'
-import WeatherLayers from './WeatherLayers'
+import WeatherLayers from './utils/WeatherLayers'
 //https://chargepoints.dft.gov.uk/api/retrieve/registry/lat/57.148/long/-2.108/dist/10/format/json/
 import { Marker, Popup } from 'react-leaflet'
+import RecyclingLayer from './utils/RecyclingLayer';
+import BusLayer from './utils/BusLayer';
 
 function LeafletMap() {
-
+  
   const [mapSelect, setMapSelect] = useState(false);
   const [electricLayer, setElectricLayer] = useState(false);
+  const [busLayer, setBusLayer] = useState(false);
   const [userLocationLayer, setUserLocationLayer] = useState(false);
   const [weatherTypeLayer, setWeatherTypeLayer] = useState("temp_new");
   const [weatherLayer, setWeatherLayer] = useState(false);
@@ -32,9 +34,10 @@ function LeafletMap() {
 
   return (
     <div >
-  <SideControlBar setMapSelect={setMapSelect} weatherLayer={weatherLayer}setElectricLayer={setElectricLayer}  setUserLocationLayer={setUserLocationLayer} setWeatherTypeLayer={setWeatherTypeLayer} setWeatherLayer={setWeatherLayer}/>
+      {/* SIDE CONTROL PANEL WITH ALL THE SETTERS PASSED THROUGH AS PROPS FOR THE CHILD COMPONENT */}
+  <SideControlBar setBusLayer={setBusLayer}setRecyclingPointsLayer={setRecyclingPointsLayer}setMapSelect={setMapSelect} weatherLayer={weatherLayer}setElectricLayer={setElectricLayer}  setUserLocationLayer={setUserLocationLayer} setWeatherTypeLayer={setWeatherTypeLayer} setWeatherLayer={setWeatherLayer}/>
 
-<MapContainer center={[57.148, -2.108]} zoom={12.6} zoomControl={false}>
+<MapContainer center={[57.148, -2.108]} zoom={10.9} zoomControl={false}>
   {/* MAP DEFAULT LOOKS */}
 {
 mapSelect===false
@@ -51,12 +54,7 @@ mapSelect===true
 attribution='&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
 url={'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'}/> 
 :null 
-}
-
-
-
-  
-
+} 
 
 {
   //#region Weather Controls
@@ -102,12 +100,25 @@ weatherTypeLayer==="precipitation_new"&&weatherLayer
   :null
   }
 
+{/* Recycling Centers plotter with conditional rendering */}
+  {
+  recyclingPointsLayer
+  ? <RecyclingLayer/>
+  : null
+  }
+
 
 {/* Electric Cars Charger plotter with conditional rendering */}
 
   {
   electricLayer
   ? <ElectricCarCharger/>
+  : null
+  }
+
+{
+  busLayer
+  ? <BusLayer/>
   : null
   }
 
