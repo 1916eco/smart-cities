@@ -40,13 +40,8 @@ const Header = () => {
     </Navbar.Collapse>
     </Container>
     <ToastContainer className="mb-2" position={"bottom-center"}>
-          <Toast onClose={() => setShow(false)} show={show} delay={2200} autohide>
+          <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
             <Toast.Header closeButton={false}>
-              <img
-                src="holder.js/20x20?text=%20"
-                className="rounded me-2"
-                alt=""
-              />
               <strong className="me-auto">Logged out!</strong>
             </Toast.Header>
           </Toast>
