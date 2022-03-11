@@ -14,7 +14,7 @@ function AboutUs() {
       console.log(data)
     };
     console.log("hello")
-    //getLocation()
+    getLocation()
   },[])
   //console.log(userBases)
   return (

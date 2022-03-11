@@ -40,7 +40,7 @@ function LogIn() {
     <div className='container d-flex justify-content-center loginBox grid'>
       <div className='my-auto'>
     <h3>Sign In</h3>
-    <Form >
+    <Form onSubmit={handleSubmit}>
     {error && <Alert variant="danger">{error}</Alert>}
     <Form.Group className='' controlId='formEmail'>
         <Form.Label>Email address</Form.Label>

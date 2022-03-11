@@ -13,10 +13,12 @@ import {db} from '../firebase'
 import {collection,doc,getDocs} from 'firebase/firestore'
 import { Plus } from 'react-bootstrap-icons';
 import {useUserAuth} from "../context/UserAuthContext";
+import BaseLayer from './utils/BaseLayer';
 
 function LeafletMap() {
   const { user } = useUserAuth();
   
+  const [userUIDProp, setUserUIDProp] = useState(false);
   const [mapSelect, setMapSelect] = useState(false);
   const [electricLayer, setElectricLayer] = useState(false);
   const [busLayer, setBusLayer] = useState(false);
@@ -34,15 +36,7 @@ function LeafletMap() {
       setLatUser(position.coords.latitude);
       setLngUser(position.coords.longitude);
     });}
-  // const homeLocationCollectionRef = collection(db,"home")
-  // useEffect(()=>{
-  //   const getLocation = async () =>{
-  //     const data = await getDocs(homeLocationCollectionRef)
-  //     setUserBases(data.docs.map((doc)=>({...doc.data(),id: doc.id})));
-  //     // console.log(userBases)
-  //   };
-  //   getLocation()
-  // })
+  useEffect(()=>{setUserUIDProp(user.uid)},[])
 
   useEffect(()=>{setMapSelect(false)},[weatherLayer])
 
@@ -130,6 +124,11 @@ weatherTypeLayer==="precipitation_new"&&weatherLayer
   ? <RecyclingLayer/>
   : null
   }
+{
+user
+?   <BaseLayer user={userUIDProp}/>
+: null
+}
 
 
 {/* Electric Cars Charger plotter with conditional rendering */}
