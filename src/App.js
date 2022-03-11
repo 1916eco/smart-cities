@@ -8,6 +8,7 @@ import './firebase.js'
 import ForgotPage from './Components/ForgotPage';
 import { UserAuthContextProvider } from './context/UserAuthContext';
 import ProtectedRoute from './Components/ProtectedRouting';
+import BaseBuilder from './Components/BaseBuilder';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
     <Route path="/AboutUs" element={<AboutUs />} />
     <Route path="/SignUp" element={<ProtectedRoute><SignUp/></ProtectedRoute>} />
     <Route path="/ForgotPass" exact element={<ForgotPage />} />
+    <Route path="/BaseBuilder" exact element={<BaseBuilder/>} />
   </Routes>
   </UserAuthContextProvider>
 </BrowserRouter>

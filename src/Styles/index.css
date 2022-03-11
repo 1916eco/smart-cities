@@ -45,6 +45,24 @@
   overflow-x: hidden;
 }
 
+.small_map {
+  height: 300px;
+}
+
+.btn-circle {
+  top: 85vh;
+  right: 10vh;
+  position: absolute;
+  z-index: 9999;
+  text-align: center;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 /* MAP BOX CSS NOT REQUIRED ANY MORE */
 /* .sidebar {
   background-color: rgba(35, 55, 75, 0.9);
