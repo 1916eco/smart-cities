@@ -1,16 +1,19 @@
 import React from 'react';
+import { useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import {Navbar, Nav,Container} from 'react-bootstrap';
+import {Navbar, Nav,Container,ToastContainer,Toast} from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import {useUserAuth} from "../context/UserAuthContext";
 
 const Header = () => {
+  const [show, setShow] = useState(false);
   const navigate = useNavigate();
   var optionButton = "";
   const { logOut, user } = useUserAuth();
   const handleLogout = async () => {
     try {
       await logOut();
+      setShow(true)
       navigate("/")
     } catch (error) {
       console.log(error.message);
@@ -36,6 +39,18 @@ const Header = () => {
     {optionButton}
     </Navbar.Collapse>
     </Container>
+    <ToastContainer className="mb-2" position={"bottom-center"}>
+          <Toast onClose={() => setShow(false)} show={show} delay={2200} autohide>
+            <Toast.Header closeButton={false}>
+              <img
+                src="holder.js/20x20?text=%20"
+                className="rounded me-2"
+                alt=""
+              />
+              <strong className="me-auto">Logged out!</strong>
+            </Toast.Header>
+          </Toast>
+        </ToastContainer>
   </Navbar>
   
   );
