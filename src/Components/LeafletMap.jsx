@@ -27,7 +27,7 @@ function LeafletMap() {
   const [weatherLayer, setWeatherLayer] = useState(false);
   const [recyclingPointsLayer, setRecyclingPointsLayer] = useState(false);
 
-  const [userBases, setUserBases] = useState([]);
+  const [userBases, setUserBases] = useState(false);
   
   const [latUser, setLatUser] = useState(null);
   const [lngUser, setLngUser] = useState(null);
@@ -43,12 +43,12 @@ function LeafletMap() {
   return (
     <div >
       {/* SIDE CONTROL PANEL WITH ALL THE SETTERS PASSED THROUGH AS PROPS FOR THE CHILD COMPONENT */}
-  <SideControlBar setBusLayer={setBusLayer}setRecyclingPointsLayer={setRecyclingPointsLayer}setMapSelect={setMapSelect} weatherLayer={weatherLayer}setElectricLayer={setElectricLayer}  setUserLocationLayer={setUserLocationLayer} setWeatherTypeLayer={setWeatherTypeLayer} setWeatherLayer={setWeatherLayer}/>
+  <SideControlBar setUserBases={setUserBases}setBusLayer={setBusLayer}setRecyclingPointsLayer={setRecyclingPointsLayer}setMapSelect={setMapSelect} weatherLayer={weatherLayer}setElectricLayer={setElectricLayer}  setUserLocationLayer={setUserLocationLayer} setWeatherTypeLayer={setWeatherTypeLayer} setWeatherLayer={setWeatherLayer}/>
   
 {
 user
 ?   <Link to="/BaseBuilder">
-      <Button variant="primary" className='btn-circle rounded-circle' onClick={console.log("")}>
+      <Button variant="primary" className='btn-circle rounded-circle'>
         <Plus size={40}/>
       </Button></Link>
 : null
@@ -125,8 +125,8 @@ weatherTypeLayer==="precipitation_new"&&weatherLayer
   : null
   }
 {
-user
-?   <BaseLayer user={userUIDProp}/>
+userBases && user
+?   <BaseLayer user={user}/>
 : null
 }
 

@@ -12,9 +12,9 @@ const Header = () => {
   const { logOut, user } = useUserAuth();
   const handleLogout = async () => {
     try {
+      navigate("/")
       await logOut();
       setShow(true)
-      navigate("/")
     } catch (error) {
       console.log(error.message);
     }
@@ -35,6 +35,7 @@ const Header = () => {
     <Nav className="me-auto">
       <Nav.Link as={Link} to="/">Map</Nav.Link>
       <Nav.Link as={Link} to="/AboutUs">Project Description</Nav.Link>
+      <Nav.Link as={Link} to="/ProfileEditor">Profile Editor</Nav.Link>
     </Nav>
     {optionButton}
     </Navbar.Collapse>

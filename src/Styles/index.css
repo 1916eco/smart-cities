@@ -14,7 +14,7 @@
   background: #555;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 800px) {
   /* For mobile phones: */
   .mapSidebar {
     background-color: rgb(35, 55, 75);
@@ -39,10 +39,21 @@
   }
 }
 
+.vertical-center {
+  min-height: 100%; /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
 .MapThemeSelector {
   color: #252525 !important;
 }
 
+.IconHelper {
+  font-size: 2rem;
+}
 .leaflet-container {
   width: 100vw;
   height: 100vh;

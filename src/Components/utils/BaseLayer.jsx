@@ -3,24 +3,26 @@ import { useState,useEffect} from 'react';
 import {collection,where, query, onSnapshot} from 'firebase/firestore'
 import {db} from '../../firebase'
 import { Marker, Popup } from 'react-leaflet';
+import useFetch from '../../Hooks/useFetch'
 
-function BaseLayer(user) {
+function BaseLayer({user}) {
   const [userBases, setUserBases] = useState([]);
 
   const homeLocationCollectionRef = collection(db,"home")
+  //api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
+//const { data } = useFetch(`api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=${process.env.REACT_APP_OPENWEATHER_API}`)
+//const { data } = useFetch(`htttp://www.api.openweathermap.org/data/2.5/weather?lat=${57}&lon=${-2}&appid=${process.env.REACT_APP_OPENWEATHER_API}`)
+//console.log(data)
+
     useEffect(()=>{
       const getLocation = async () =>{
-
-          console.log(user.user)
-        const q = await query(homeLocationCollectionRef,where("UserID", "==", user.user))
+        const q = await query(homeLocationCollectionRef,where("UserID", "==", user.uid))
         onSnapshot(q,(snapshot)=>{
             let homes = []
             snapshot.docs.forEach((doc)=>{
                 homes.push({...doc.data(),id:doc.id})
-                
             })
             setUserBases(homes);
-            console.log(userBases)
         })
       };
       getLocation()
