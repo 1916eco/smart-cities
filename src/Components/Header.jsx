@@ -35,8 +35,12 @@ const Header = () => {
     <Nav className="me-auto">
       <Nav.Link as={Link} to="/">Map</Nav.Link>
       <Nav.Link as={Link} to="/AboutUs">Project Description</Nav.Link>
-      <Nav.Link as={Link} to="/ProfileEditor">Profile Editor</Nav.Link>
-    </Nav>
+{
+user
+?       <Nav.Link as={Link} to="/ProfileEditor">Profile Editor</Nav.Link>
+: null
+}    
+</Nav>
     {optionButton}
     </Navbar.Collapse>
     </Container>

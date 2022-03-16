@@ -35,6 +35,7 @@ function LeafletMap() {
     navigator.geolocation.getCurrentPosition((position) => {
       setLatUser(position.coords.latitude);
       setLngUser(position.coords.longitude);
+      console.log(position)
     });}
   useEffect(()=>{setUserUIDProp(user.uid)},[])
 

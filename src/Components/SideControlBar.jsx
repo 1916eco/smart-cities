@@ -13,7 +13,7 @@ function SideControlBar({setElectricLayer, setUserLocationLayer,setWeatherTypeLa
         <Card.Body>
           <Card.Title>Layer Controller</Card.Title>
           <Card.Text>
-            Layer controller, select layers to display. Weather will be set to dark theme for better viewing.
+            Layer controller, select layers to display. With weather layer map will be set to dark theme for better viewing.
           </Card.Text>
         </Card.Body>
         <ListGroup bg="dark"  className="list-group-flush">
