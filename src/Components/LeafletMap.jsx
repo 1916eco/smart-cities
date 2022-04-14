@@ -9,8 +9,6 @@ import { Link } from 'react-router-dom';
 import RecyclingLayer from './utils/RecyclingLayer';
 import BusLayer from './utils/BusLayer';
 import {Button} from "react-bootstrap";
-import {db} from '../firebase'
-import {collection,doc,getDocs} from 'firebase/firestore'
 import { Plus } from 'react-bootstrap-icons';
 import {useUserAuth} from "../context/UserAuthContext";
 import BaseLayer from './utils/BaseLayer';
@@ -18,7 +16,6 @@ import BaseLayer from './utils/BaseLayer';
 function LeafletMap() {
   const { user } = useUserAuth();
   
-  const [userUIDProp, setUserUIDProp] = useState(false);
   const [mapSelect, setMapSelect] = useState(false);
   const [electricLayer, setElectricLayer] = useState(false);
   const [busLayer, setBusLayer] = useState(false);
@@ -29,15 +26,14 @@ function LeafletMap() {
 
   const [userBases, setUserBases] = useState(false);
   
+
   const [latUser, setLatUser] = useState(null);
   const [lngUser, setLngUser] = useState(null);
   if(userLocationLayer){
     navigator.geolocation.getCurrentPosition((position) => {
       setLatUser(position.coords.latitude);
       setLngUser(position.coords.longitude);
-      console.log(position)
     });}
-  useEffect(()=>{setUserUIDProp(user.uid)},[])
 
   useEffect(()=>{setMapSelect(false)},[weatherLayer])
 

@@ -2,8 +2,13 @@ import React from 'react'
 import useFetch from '../../Hooks/useFetch'
 import * as L from "leaflet";
 import { Marker, Popup } from 'react-leaflet'
+import { useQuery } from 'react-query'
+
 function RecyclingLayer() {
-    const { data } = useFetch("https://services5.arcgis.com/0sktPVp3t1LvXc9z/arcgis/rest/services/Recycling_Centres/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json")
+  //const { data } = useFetch("https://services5.arcgis.com/0sktPVp3t1LvXc9z/arcgis/rest/services/Recycling_Centres/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json")
+  const { data } = useFetch(`${process.env.REACT_APP_BACKEND_API_LINK}/api/recycle`)
+  //console.log(something)
+
 
     const RecycleIcon = L.divIcon({
         html: `

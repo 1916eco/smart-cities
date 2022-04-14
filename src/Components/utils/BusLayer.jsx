@@ -3,7 +3,7 @@ import useFetch from '../../Hooks/useFetch'
 import * as L from "leaflet";
 import { Marker, Popup } from 'react-leaflet'
 function BusLayer() {
-    const { data } = useFetch("https://services5.arcgis.com/0sktPVp3t1LvXc9z/arcgis/rest/services/Bus_Facilities/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json")
+    const { data } = useFetch(`${process.env.REACT_APP_BACKEND_API_LINK}/api/bus`)
 
     const BusIcon = L.divIcon({
         html: `<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title"

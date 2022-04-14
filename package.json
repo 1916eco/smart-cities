@@ -25,6 +25,7 @@
     "react-google-button": "^0.7.2",
     "react-leaflet": "^3.2.5",
     "react-map-gl": "^6.1.19",
+    "react-query": "^3.34.16",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",

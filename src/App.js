@@ -10,16 +10,25 @@ import { UserAuthContextProvider } from './context/UserAuthContext';
 import ProtectedRoute from './Components/ProtectedRouting';
 import BaseBuilder from './Components/BaseBuilder';
 import ProfileEditor from './Components/ProfileEditor';
-
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query'
 function App() {
+
+  const queryClient = new QueryClient();
   return (
     <div className="App">
+<QueryClientProvider client={queryClient}>
 <BrowserRouter>
 {/* User Context this is the full controller of the system sign in any routes that are within the tags have access */}
   <UserAuthContextProvider> 
   <Header />
   <Routes>
-    <Route path="/" element={<LeafletMap/>} />
+    <Route exact path="/" element={<LeafletMap/>} />
     <Route path="/LogIn" element={<ProtectedRoute><LogIn/></ProtectedRoute>} />
     <Route path="/AboutUs" element={<AboutUs />} />
     <Route path="/SignUp" element={<ProtectedRoute><SignUp/></ProtectedRoute>} />
@@ -29,6 +38,7 @@ function App() {
   </Routes>
   </UserAuthContextProvider>
 </BrowserRouter>
+  </QueryClientProvider>
     </div>
     
   );

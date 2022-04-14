@@ -14,11 +14,10 @@ const BoltIcon = L.divIcon({
 
 function ElectricCarCharger() {
 
-const { data } = useFetch("https://chargepoints.dft.gov.uk/api/retrieve/registry/lat/57.148/long/-2.108/dist/10/format/json/")
-console.log(data)
+const { data } = useFetch(`${process.env.REACT_APP_BACKEND_API_LINK}/api/cars`)
   return (
     <div>
-    {chargerData?.map(charger =>(
+    {data?.ChargeDevice.map(charger =>(
       <Marker icon={BoltIcon} key={charger.ChargeDeviceId} position={[charger.ChargeDeviceLocation.Latitude,charger.ChargeDeviceLocation.Longitude]}>
       <Popup>
         {charger.ChargeDeviceName} <br /> {charger.ChargeDeviceLocation.Address.PostCode}.
