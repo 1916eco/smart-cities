@@ -122,8 +122,8 @@ weatherTypeLayer==="precipitation_new"&&weatherLayer
   : null
   }
 {
-userBases && user
-?   <BaseLayer user={user}/>
+userBases
+?   <BaseLayer/>
 : null
 }
 

@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { Popup } from 'react-leaflet';
+import { Marker, Popup } from 'react-leaflet';
 import useFetch from '../../Hooks/useFetch'
 import { useQuery } from 'react-query'
 import axios from 'axios'
 
 function PopupWeather({bases}) {
+  const { data } = useFetch(`${process.env.REACT_APP_BACKEND_API_LINK}/api/${bases.location[0]}/${bases.location[1]}`)
   const [dir,setDir] = useState("");
+  const [weatherData,setWeatherData] = useState();
   useEffect(() => {
-    console.log("bases")
-    console.log(bases.weatherObject)
+    setWeatherData(data)
   }, [])
   
 
@@ -89,17 +90,21 @@ function PopupWeather({bases}) {
         }
 
   return (
-    <Popup>
-    <b>Name: {bases.homeName}</b><br/>
+    <>
 
-<p>   Weather: {bases.weatherObject.weather[0].main}<br/>
-    Temperature: {(bases.weatherObject.main.temp - 273.15).toFixed(0)}℃<br/>
-    Wind: {bases.weatherObject.wind.speed},{winddir(bases.weatherObject.wind.deg)}<br/></p>
+<Popup>
+<b>Name: {bases.homeName}</b><br/>
 
 
-
+{
+weatherData
+? <p> Weather: {data.weather[0].main}<br/>
+    Temperature: {(data.main.temp - 273.15).toFixed(0)}℃<br/>
+    Wind: {data.wind.speed},{winddir(data.wind.deg)}<br/></p>
+: null
+}
   </Popup>
-
+</>
   )}
 
 export default PopupWeather
