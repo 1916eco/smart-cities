@@ -98,6 +98,26 @@
   align-items: center;
   height: 100vh;
 }
+.airQuality1 {
+  color: #37ff00 !important;
+  background-color: rgba(85, 85, 85, 0.734);
+}
+.airQuality2 {
+  color: #e5ff00 !important;
+  background-color: #555;
+}
+.airQuality3 {
+  color: #ffb300 !important;
+  background-color: #555;
+}
+.airQuality4 {
+  color: #ff7300 !important;
+  background-color: rgba(85, 85, 85, 0.292);
+}
+.airQuality5 {
+  color: #ff0000 !important;
+  background-color: rgba(85, 85, 85, 0.292);
+}
 
 /* MAP BOX CSS NOT REQUIRED ANY MORE */
 /* .sidebar {
