@@ -82,7 +82,7 @@ function ProfileEditor() {
           </Button>
         </Modal.Footer>
       </Modal>
-      <Modal show={showDelete} onHide={handleClose}>
+      <Modal show={showDelete} onHide={handleDeleteClose}>
         <Modal.Header closeButton>
           <Modal.Title>Delete Account</Modal.Title>
         </Modal.Header>
@@ -90,7 +90,7 @@ function ProfileEditor() {
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>
-                Enter Current email to delete <b>{user.email}</b>
+                Enter Current email to delete account! <b>{user.email}</b>
               </Form.Label>
               <Form.Control
                 type="email"
@@ -106,9 +106,15 @@ function ProfileEditor() {
           <Button variant="primary" onClick={handleDeleteClose}>
             Close
           </Button>
-          <Button variant="danger" onClick={handleDeleteAccount}>
-            Delete Account
-          </Button>
+          {emailToConfirm === user.email ? (
+            <Button variant="danger" onClick={handleDeleteAccount}>
+              Delete Account
+            </Button>
+          ) : (
+            <Button variant="danger" disabled onClick={handleDeleteAccount}>
+              Delete Account
+            </Button>
+          )}
         </Modal.Footer>
       </Modal>
       <div className="jumbotron vertical-center">
