@@ -3,12 +3,18 @@
 describe('Test all aspects of Smart cities site', () => {
 
     beforeEach(() => {
-        cy.visit('http://localhost:3000')
+        cy.visit('https://enricosimon.xyz/')
     })
 
     it('Navigation Around and use website', () => {
         cy.get('#custom-switch').click()
         cy.get(':nth-child(2) > .nav-link').click()
+        cy.get(':nth-child(2) > .form-check > .form-check-input').click()
+        cy.wait(1000)
+        cy.get(':nth-child(3) > .form-check > .form-check-input').click()
+        cy.wait(1000)
+        cy.get(':nth-child(4) > .form-check > .form-check-input').click()
+
     })
     it('Login', () => {
         // logout before login
@@ -37,5 +43,21 @@ describe('Test all aspects of Smart cities site', () => {
     it('Logout', () => {
         cy.get(':nth-child(2) > .nav-link').should('have.text', 'Logout').click()
         cy.get(':nth-child(2) > .nav-link').should('have.text', 'Login')
+    })
+    it('SignUp', () => {
+        cy.get(':nth-child(2) > .nav-link').should('have.text', 'Login').click()
+        cy.get(':nth-child(5) > a').click()
+        cy.get('#formEmail').type('testemail@email.com')
+        cy.get('#formName').type('Test User')
+        cy.get('#formPassword').type('test123?')
+        cy.get('.btn').click()
+
+    })
+    it('Delete Account', () => {
+        cy.get('[href="/ProfileEditor"]').click()
+        cy.get('.btn').click()
+        cy.get('#exampleForm\.ControlInput1').type('testemail@email.com')
+        cy.get('.modal-footer > .btn-danger').click()
+        
     })
 })
