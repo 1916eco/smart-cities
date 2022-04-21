@@ -4,7 +4,6 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import ElectricCarCharger from "./utils/ElectricCarCharger";
 import SideControlBar from "./SideControlBar";
 import WeatherLayers from "./utils/WeatherLayers";
-//https://chargepoints.dft.gov.uk/api/retrieve/registry/lat/57.148/long/-2.108/dist/10/format/json/
 import { Link } from "react-router-dom";
 import RecyclingLayer from "./utils/RecyclingLayer";
 import BusLayer from "./utils/BusLayer";

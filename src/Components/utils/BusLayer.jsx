@@ -1,12 +1,12 @@
-import React from 'react'
-import useFetch from '../../Hooks/useFetch'
+import React from "react";
+import useFetch from "../../Hooks/useFetch";
 import * as L from "leaflet";
-import { Marker, Popup } from 'react-leaflet'
+import { Marker, Popup } from "react-leaflet";
 function BusLayer() {
-    const { data } = useFetch(`${process.env.REACT_APP_BACKEND_API_LINK}/api/bus`)
+  const { data } = useFetch(`${process.env.REACT_APP_BACKEND_API_LINK}/api/bus`);
 
-    const BusIcon = L.divIcon({
-        html: `<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title"
+  const BusIcon = L.divIcon({
+    html: `<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title"
         aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
           <title>Bus</title>
           <desc>A line styled icon from Orion Icon Library.</desc>
@@ -18,18 +18,26 @@ function BusLayer() {
           stroke="#0000FF" fill="none" d="M16.1 46H22m20.1 0H48M8 16h48M8 38h48m6-8v8M2 30v8m54 16V6a4 4 0 0 0-4-4H12a4 4 0 0 0-4 4v48zM8 38l-6-6m54 6l6-6"
           data-name="layer2"></path>
         </svg>`,
-        className: ""
-      });
+    className: "",
+  });
   return (
-    <div>    
-        {data?.features.map(point =>(
-        <Marker icon={BusIcon} key={point.attributes.OBJECTID} position={[point.geometry.points[0][1],point.geometry.points[0][0]]}>
+    <div>
+      {data?.features.map((point) => (
+        <Marker
+          icon={BusIcon}
+          key={point.attributes.OBJECTID}
+          position={[point.geometry.points[0][1], point.geometry.points[0][0]]}
+        >
           <Popup>
-          {point.attributes.STOP_SHELT} <br/>{point.attributes.RAISEDKERB}<br/>{point.attributes.ROADNAME}
+            {point.attributes.STOP_SHELT} <br />
+            {point.attributes.RAISEDKERB}
+            <br />
+            {point.attributes.ROADNAME}
           </Popup>
-        </Marker>))}
-        </div>
-  )
+        </Marker>
+      ))}
+    </div>
+  );
 }
 
-export default BusLayer
+export default BusLayer;
