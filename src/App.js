@@ -32,7 +32,7 @@ function App() {
     <Route path="/LogIn" element={<ProtectedRoute><LogIn/></ProtectedRoute>} />
     <Route path="/AboutUs" element={<AboutUs />} />
     <Route path="/SignUp" element={<ProtectedRoute><SignUp/></ProtectedRoute>} />
-    <Route path="/ForgotPass" exact element={<ForgotPage />} />
+    <Route path="/ForgotPass" exact element={<ProtectedRoute><ForgotPage /></ProtectedRoute>} />
     <Route path="/BaseBuilder" exact element={<BaseBuilder/>} />
     <Route path="/ProfileEditor" exact element={<ProfileEditor/>} />
   </Routes>

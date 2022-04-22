@@ -7,7 +7,8 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   deleteUser,
-  updateProfile
+  updateProfile,
+  sendPasswordResetEmail
 } from "firebase/auth";
 import { auth } from "../firebase";
 
@@ -36,6 +37,9 @@ export function UserAuthContextProvider({ children }) {
   function updateUserProfile(name){
     return updateProfile(auth.currentUser,{displayName:name})
   }
+  function resetPassword(email){
+    return sendPasswordResetEmail(auth, email)
+  }
 
 
   useEffect(() => {
@@ -52,7 +56,7 @@ export function UserAuthContextProvider({ children }) {
 
   return (
     <userAuthContext.Provider
-      value={{ user, logIn, signUp, logOut, googleSignIn,deleteUserProfile,updateUserProfile }}
+      value={{ user, logIn, signUp, logOut, googleSignIn,deleteUserProfile,updateUserProfile,resetPassword }}
     >
       {children}
     </userAuthContext.Provider>
