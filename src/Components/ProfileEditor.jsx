@@ -44,8 +44,9 @@ function ProfileEditor() {
     if (emailToConfirm === user.email) {
       console.log("delete account");
       await deleteUserProfile();
-      setDeleteShow(false);
       navigate("/");
+      // setDeleteShow(false);
+      window.location.reload();
     }
   };
 
