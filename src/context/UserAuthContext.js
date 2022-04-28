@@ -18,6 +18,8 @@ const userAuthContext = createContext();
 export function UserAuthContextProvider({ children }) {
   const [user, setUser] = useState({});
 
+
+  // Each function is imported from the firebase library and is used by the context provider which is used by the components
   function logIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
   }
@@ -55,6 +57,7 @@ export function UserAuthContextProvider({ children }) {
 
 
   return (
+    // The context provider is used by the components to access the functions
     <userAuthContext.Provider
       value={{ user, logIn, signUp, logOut, googleSignIn,deleteUserProfile,updateUserProfile,resetPassword }}
     >

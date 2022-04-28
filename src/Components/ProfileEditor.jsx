@@ -119,12 +119,15 @@ function ProfileEditor() {
         </Modal.Footer>
       </Modal>
       <div className="jumbotron vertical-center">
-        <div className="container">
+        <div className="container pt-4">
           <h1>
             Hello, {user.displayName}
             <Pencil width="16" height="16" className="mx-3" onClick={() => setShow(true)} />
+            <br />
+            Email - {user.email}
           </h1>
-
+          <br />
+          <hr></hr>
           <h1>Home Editor</h1>
           <Table striped bordered hover variant="dark" responsive="sm">
             <thead>

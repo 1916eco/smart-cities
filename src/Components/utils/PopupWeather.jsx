@@ -4,27 +4,12 @@ import useFetch from "../../Hooks/useFetch";
 import { Spinner } from "react-bootstrap";
 
 function PopupWeather({ bases }) {
-  //const [weatherData,setWeatherData] = useState();
-  //const [airQualityData,setAirQualityData] = useState();
-
-  //fetching data for both weather and air quality data from the api and setting the data to an alias variable
   const { data: weatherData } = useFetch(
     `${process.env.REACT_APP_BACKEND_API_LINK}/api/${bases.location[0]}/${bases.location[1]}`
   );
-  const { data: airQualityData, loading } = useFetch(
+  const { data: airQualityData } = useFetch(
     `${process.env.REACT_APP_BACKEND_API_LINK}/api/airQuality/${bases.location[0]}/${bases.location[1]}`
   );
-  // const fetchAirData = async () => {
-  //   return axios.get(`${process.env.REACT_APP_BACKEND_API_LINK}/api/airQuality/${bases.location[0]}/${bases.location[1]}`)
-
-  // }
-  // const fetchWeatherData = async () => {
-  //   return axios.get(`${process.env.REACT_APP_BACKEND_API_LINK}/api/${bases.location[0]}/${bases.location[1]}`)
-  // }
-
-  //const { data: weatherData } =useQuery('weather', fetchWeatherData())
-  //const { data:airQualityData } =useQuery('airQuality', fetchAirData())
-
   return (
     <>
       <Popup>
