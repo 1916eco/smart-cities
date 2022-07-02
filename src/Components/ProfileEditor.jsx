@@ -118,7 +118,7 @@ function ProfileEditor() {
           )}
         </Modal.Footer>
       </Modal>
-      <div className="jumbotron vertical-center">
+      <div className="jumbotron vertical-center mt-2">
         <div className="container pt-4">
           <h1>
             Hello, {user.displayName}
